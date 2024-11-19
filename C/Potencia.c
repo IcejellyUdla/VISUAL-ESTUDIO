@@ -26,3 +26,9 @@ for (int i = 1; i <= n2; i++)
     printf("%d\n", resultado);
     return 0;
 }
+
+#include <stdio.h>
+
+int main (int argc, char *argv[]) {
+    return 0;
+}

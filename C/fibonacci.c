@@ -1,7 +1,17 @@
 #include <stdio.h>
 
 int main (int argc, char *argv[]) {
-    int n, n1=0, n2=1, n3;
+    int opc;
+    printf("sellecione una opcion:\n");
+    printf("1. serie de fibonacci\n");
+    printf("2. multiplicacion (sumas sucesivas)\n");
+    printf("3. potencia (multipplicaciones sucesivas)\n");
+    printf(">>");
+    scanf("%d",&opc);
+    switch (opc)
+    {
+    case 1:
+     int n, n1=0, n2=1, n3;
     printf("hasta que numero quiere la serie \n");
     scanf("%d", &n);
     if (n<2)
@@ -17,6 +27,6 @@ int main (int argc, char *argv[]) {
         n2=n3;
         printf("%d ", n3);
     }
-    
     return 0;
+}
 }

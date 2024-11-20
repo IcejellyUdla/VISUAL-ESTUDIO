@@ -35,12 +35,23 @@ int main (int argc, char *argv[]) {
         scanf("%f", &nu1);
         printf("ingrese n2: ");
         scanf("%f", &nu2);
+    if (nu1<0||nu2<0)
+    {
+       printf("el valor ingresado debe ser positivo");
+       return 0;
+    }
+    else
+    {
+    {
+    }
+    
         for (int i = 0; i < nu2; i++)
     {
         resultado= resultado+nu1;
     }
         printf("%.2f\n", resultado);
         return 0;
+    }
 case 3: 
         int num1, num2, result=1;
         printf("ingrese la base: ");
@@ -61,7 +72,7 @@ case 3:
     {
     for (int i = 1; i <= num2; i++)
     {
-        resultado= result*num1;
+        result= result*num1;
     }
         printf("%d\n", result);
     }

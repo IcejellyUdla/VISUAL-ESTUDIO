@@ -10,6 +10,7 @@ int main (int argc, char *argv[]) {
         return 0;
     }
     printf("%d %d ", n1, n2);
+    //para cambiar la cantidad que suma es de quitar el i++ y cambiar para un i+(pones cualquier valor)
     for (int i = 2; i < n; i+=1)
     {
         n3=n1+n2;

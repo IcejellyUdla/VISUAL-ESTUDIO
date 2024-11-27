@@ -6,16 +6,13 @@ int main (int argc, char *argv[]) {
     float precioni=3.50, precioad=7, precio3era=3, total;
     printf("ingrese cuantas personas van a ingresar: ");
     scanf("%f", &cantidadpersonas);
-if (cantidadpersonas!=0)
+if (cantidadpersonas>0)
 {
-    printf("ingrese cuantas personas van a ingresar: ");
-    scanf("%f", &cantidadpersonas);
-}
-while (contadorpersonas<cantidadpersonas)
-{
+    while (contadorpersonas<cantidadpersonas)
+    {
     printf("INGRESE LA EDAD DE LA PERSONA: ");
     scanf("%f", &edadpersona);
-   if (edadpersona>=1&&edadpersona<12)
+    if (edadpersona>=1&&edadpersona<12)
     {
         edadpersona=precioni;
         printf("La precio de la entrada de la persona ");
@@ -52,9 +49,13 @@ while (contadorpersonas<cantidadpersonas)
     {
         printf("EDAD INCORRECTA INGRESE DE NUEVO\n");
     }
-
-}
-
+    }
+    }
+    else
+    {
+    printf("ERROR\n");
+    return 0;
+    }
     printf("El valor total por las dos entradas es de: $");
     printf("%.2f", total);
     return 0;

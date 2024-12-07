@@ -53,3 +53,11 @@ precio_billete = calcular_precio_billete(distancia, estancia)
 
 # Mostrar el precio final
 print(f"El precio del billete de ida y vuelta es: ${precio_billete:.2f}")
+hola=0
+juan=1
+def asjasjknas (hola, juan):
+    hola=1
+    juan=-2
+jhon=(hola*juan)
+print( jhon )
+    

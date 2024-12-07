@@ -1,11 +1,11 @@
 #include <stdio.h>
-
 int main (int argc, char *argv[]) {
     float cantidadpersonas,edadpersona=0,contadorpersonas=0; 
     int numpersonas=1;
     float precioni=3.50, precioad=7, precio3era=3, total;
     printf("ingrese cuantas personas van a ingresar: ");
     scanf("%f", &cantidadpersonas);
+
 if (cantidadpersonas>0)
 {
     while (contadorpersonas<cantidadpersonas)
@@ -54,7 +54,7 @@ if (cantidadpersonas>0)
     else
     {
     printf("ERROR\n");
-    return 0;
+    return 0 ;
     }
     printf("El valor total por las dos entradas es de: $");
     printf("%.2f", total);

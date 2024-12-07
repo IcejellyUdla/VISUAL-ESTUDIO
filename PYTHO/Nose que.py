@@ -13,6 +13,7 @@ Cifranum=(Cifranum+1)
 sum1=(sum1+moding)
 print(numero)
 print(moding)
+
 numero=numero // suma
 moding=numero%suma
 sum1=(sum1+moding)

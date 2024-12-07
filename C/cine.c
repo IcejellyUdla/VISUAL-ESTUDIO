@@ -58,4 +58,5 @@ int main (int argc, char *argv[]) {
     total=edadpersona1+edadpersona2;
     printf("El valor total por las dos entradas es de: $");
     printf("%.2f", total);
+    
 }

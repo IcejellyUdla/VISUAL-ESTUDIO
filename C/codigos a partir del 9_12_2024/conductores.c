@@ -3,10 +3,8 @@
 int main (int argc, char *argv[]) {
     int numconductores;
     float tmnc1,tmxc1,tpc1,edac1;
-    float tmnc2,tmxc2,tpc2,edac2;
-    float tmnc3,tmxc3,tpc3,edac3;
-    float tmnc4,tmxc4,tpc4,edac4;
-    float tmnc5,tmxc5,tpc5,edac5;
+    float tmnc,tmxc,tpc,edac;
+    float maxtmnc,mintmxc,mintpc,proedac=0;
     printf("ingrese el numero de conductores, el maximo numero son 5:");
     scanf("%d", &numconductores);
     if (numconductores==1)
@@ -29,11 +27,34 @@ int main (int argc, char *argv[]) {
     {
         for (int i = 1; i < numconductores; i++)
         {
-        
+        printf("ingrese el tiempo minimo del conductor en terminar la meta: ");
+        scanf("%f", &tmnc);
+        printf("ingrese el tiempo maximo del conductor en terminar la meta: ");
+        scanf("%f1", &tmxc);
+        printf("ingrese el tiempo en pits del conductor: ");
+        scanf("%f", &tpc);
+        printf("ingrese la edad del conductor: ");
+        scanf("%f", &edac);
+        if (tmnc<=tmnc)
+        {
+            maxtmnc=tmnc;
         }
-        
-        printf("ingrese el tiempo minimo en terminar la meta");
-        scanf("%f", &tmnc1);
+        if (tmxc<=tmxc)
+        {
+            mintmxc=tmxc;
+        }
+        if (tpc<=tpc)
+        {
+            mintpc=tpc;
+        }
+        proedac=proedac+edac;  
+        }
+        proedac=proedac/numconductores;
+        printf("el menor tiempo fue de %.2f\n", maxtmnc );
+        printf("el mayor tiempo fue de %.2f\n", mintmxc );
+        printf("el tiempo en pits fue de %.2f\n", mintpc );
+        printf("el promedio de edad es de %.2f\n", proedac );
+        return 0;
     }
     else if (numconductores==3)
     {

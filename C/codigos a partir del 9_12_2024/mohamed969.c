@@ -1,17 +1,18 @@
 #include <stdio.h>
 
 int main (int argc, char *argv[]) {
-    int edadmoha=969, numintento=0, numlimite=3,numadivina,continuar=1;
+    int edadmatusalen=969, numintento, numlimite=3,numadivina;
+    char continuar="si";
     printf("adivide la edad de Matusalen tiene 3 intentos\n");
     printf("pista la edad esta entre 0 a 1000\n");
-   while (continuar==1)
+   while (continuar=="si")
    {
-    while (numintento<numlimite)
+    for (int numintento = 0; numintento < numlimite; numintento++)
     {
-        printf("Que edad piensa que tiene Matusalen\n");
+       printf("Que edad piensa que tiene Matusalen\n");
         printf(">>> ");
         scanf("%d",&numadivina);
-        if (numadivina==edadmoha)
+        if (numadivina==edadmatusalen)
         {
             printf("ganaste felicidades");
             return 0;
@@ -41,15 +42,20 @@ int main (int argc, char *argv[]) {
         {
             printf("te pasaste retrocede un poco");
         }
-   } 
-   printf("intentos 0 1 para constinuar 2 para cerrar");
-   scanf("%d",&continuar);
-   if (continuar==1)
+    }
+   printf("Tiene 0 intentos escriba ""si"" para continuar y ""no"" para cerrar");
+   scanf("%c",&continuar);
+   if (continuar=="si")
    {
     numintento=0;
    }
-   
-}
+   else
+   {
     printf("adios");    
     return 0;
+   }
+   
+   
+}
+    
 }

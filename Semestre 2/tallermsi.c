@@ -72,7 +72,7 @@ int main()
                     nombres[cont][len] = '\0';
                     if (strlen(nombres[cont]) == 0)
                     {
-                        printf(Rojo "El nombre no puede estar vacío. Intente nuevamente.\n" Reset);
+                        printf(Rojo "El nombre no puede estar vacio. Intente nuevamente.\n" Reset);
                     }
                 } while (strlen(nombres[cont]) == 0);
                 do

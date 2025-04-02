@@ -35,7 +35,7 @@ int main()
             printf(Celeste"6. Salir"Reset);
             printf(Verde "                             |\n" Reset);
             printf(Verde "\t|======================================|\n" Reset);
-            printf(Celeste"\tSeleccione una opcion: "Reset);
+            printf(Celeste"\t Seleccione una opcion: "Reset);
             fflush(stdin);
             status = scanf("%d", &opcion);
             if (status == 0)
@@ -75,8 +75,7 @@ int main()
                 if (status == 0)
                 {
                     printf(Rojo "Error ingrese un numero. \n" Reset);
-                    while (getchar() != '\n')
-                        ;
+                    while (getchar() != '\n');
                 }
                 else if (stock <= 0)
                 {

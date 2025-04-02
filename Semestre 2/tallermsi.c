@@ -2,7 +2,7 @@
 #include <string.h>
 int main()
 {
-    int cantidad, opcion, status,productoregistrado = 0;
+    int cantidad, opcion, status, productoregistrado = 0;
     float descuento;
     char id[5][10];
     char nombres[5][30];
@@ -10,7 +10,7 @@ int main()
     float precio[5];
     float total_ganancias = 0, venta;
     int cont = 0;
-    int preciofinal,len;
+    int preciofinal, len;
 
 #define Rojo "\x1B[31m"
 #define Verde "\x1B[32m"
@@ -63,12 +63,18 @@ int main()
             {
                 printf("\nIngrese el ID del producto %d: ", cont);
                 scanf("%s", &id[cont]);
-                printf("Ingrese el nombre del producto %d: ", cont);
-                fflush(stdin);
-                fgets(nombres[cont], 30, stdin);
-                len = strlen(nombres[cont])-1;
-                nombres[cont][len] = '\0';
-                
+                do
+                {
+                    printf("Ingrese el nombre del producto %d: ", cont);
+                    fflush(stdin);
+                    fgets(nombres[cont], 30, stdin);
+                    len = strlen(nombres[cont]) - 1;
+                    nombres[cont][len] = '\0';
+                    if (strlen(nombres[cont]) == 0)
+                    {
+                        printf(Rojo "El nombre no puede estar vacío. Intente nuevamente.\n" Reset);
+                    }
+                } while (strlen(nombres[cont]) == 0);
                 do
                 {
                     printf("Ingrese la cantidad inicial en stock del producto %d: ", cont);
@@ -136,7 +142,8 @@ int main()
                         if (status == 0)
                         {
                             printf(Rojo "Error ingrese un numero. " Reset);
-                            while (getchar() != '\n');
+                            while (getchar() != '\n')
+                                ;
                         }
                         else if (cantidad <= 0)
                         {
@@ -149,6 +156,11 @@ int main()
                         }
                         preciofinal = precio[i];
                     } while (cantidad < 1 || status == 0);
+                }
+                else
+                {
+                    printf(Rojo "El ID ingresado no existe.\n" Reset);
+                    break;
                 }
             }
 
@@ -245,6 +257,11 @@ int main()
                     stock[i] += cantidad;
                     printf(Verde "El stock actual ahora es de %d.\n", stock[i], Reset);
                 }
+                else
+                {
+                    printf(Rojo "El ID ingresado no existe.\n" Reset);
+                    break;
+                }
             }
             break;
         case 4:
@@ -252,7 +269,7 @@ int main()
             {
                 printf(Rojo "\nPor favor primero registrar el producto.\n" Reset);
                 break;
-            }   
+            }
             printf(Verde "ID\t\tNombre\t\tStock\t\tPrecio\n" Reset);
             for (int i = 0; i < cont; i++)
             {

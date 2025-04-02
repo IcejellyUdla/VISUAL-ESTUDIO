@@ -2,7 +2,7 @@
 #include <string.h>
 int main()
 {
-    int cantidad, opcion, status;
+    int cantidad, opcion, status,productoregistrado = 0;
     float descuento;
     char id[5][10];
     char nombres[5][30];
@@ -10,7 +10,7 @@ int main()
     float precio[5];
     float total_ganancias = 0, venta;
     int cont = 0;
-    int preciofinal;
+    int preciofinal,len;
 
 #define Rojo "\x1B[31m"
 #define Verde "\x1B[32m"
@@ -66,7 +66,9 @@ int main()
                 printf("Ingrese el nombre del producto %d: ", cont);
                 fflush(stdin);
                 fgets(nombres[cont], 30, stdin);
-
+                len = strlen(nombres[cont])-1;
+                nombres[cont][len] = '\0';
+                
                 do
                 {
                     printf("Ingrese la cantidad inicial en stock del producto %d: ", cont);
@@ -99,13 +101,19 @@ int main()
                     }
                 } while (precio[cont] <= 0 || status == 0);
                 cont++;
+                productoregistrado = 1;
             }
             break;
         case 2:
+            if (productoregistrado != 1)
+            {
+                printf(Rojo "\nPor favor primero registrar el producto.\n" Reset);
+                break;
+            }
             char naux[10];
             printf("Seleccione el producto que desea vender escribiendo el Id correspondiente\n");
             printf("ID\t\tNombre\t\tStock\t\tPrecio\n");
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < cont; i++)
             {
                 printf("%s\t\t%s\t\t%d\t\t%.2f\n", id[i], nombres[i], stock[i], precio[i]);
             }
@@ -128,8 +136,7 @@ int main()
                         if (status == 0)
                         {
                             printf(Rojo "Error ingrese un numero. " Reset);
-                            while (getchar() != '\n')
-                                ;
+                            while (getchar() != '\n');
                         }
                         else if (cantidad <= 0)
                         {
@@ -200,16 +207,22 @@ int main()
             }
             break;
         case 3:
+            if (productoregistrado != 1)
+            {
+                printf(Rojo "\nPor favor primero registrar el producto.\n" Reset);
+                break;
+            }
             char stck[10];
             printf("Seleccione el producto que desea agregar stock escribiendo el Id correspondiente\n");
             printf("ID\t\tNombre\t\tStock\t\tPrecio\n");
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < cont; i++)
             {
-                printf("%s\t\t%s\t\t%d\t\t%f\n", id[i], nombres[i], stock[i], precio[i]);
+                printf("%s\t\t%s\t\t%d\t\t%.2f\n", id[i], nombres[i], stock[i], precio[i]);
             }
+            printf(">>> ");
             fflush(stdin);
             scanf("%s", &stck);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < cont; i++)
             {
                 if (strcmp(id[i], stck) == 0)
                 {
@@ -235,14 +248,24 @@ int main()
             }
             break;
         case 4:
+            if (productoregistrado != 1)
+            {
+                printf(Rojo "\nPor favor primero registrar el producto.\n" Reset);
+                break;
+            }   
             printf(Verde "ID\t\tNombre\t\tStock\t\tPrecio\n" Reset);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < cont; i++)
             {
                 printf(Verde "%s\t\t%s\t\t%d\t\t%.2f\n" Reset, id[i], nombres[i], stock[i], precio[i]);
             }
             break;
 
         case 5:
+            if (productoregistrado != 1)
+            {
+                printf(Rojo "\nPor favor primero registrar el producto.\n" Reset);
+                break;
+            }
             printf(Verde "\nTotal de ganancias: $%.2f\n", total_ganancias, Reset);
             break;
 

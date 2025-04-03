@@ -8,7 +8,7 @@ int main()
     char nombres[5][30];
     int stock[5];
     float precio[5];
-    float total_ganancias = 0, venta;
+    float total_ganancias = 0, venta, gananciasporproducto[5];
     int cont = 0;
     int preciofinal, len;
 
@@ -155,67 +155,70 @@ int main()
                             status = 0;
                         }
                         preciofinal = precio[i];
+                        status = 1;
                     } while (cantidad < 1 || status == 0);
-                }
-                else
-                {
-                    printf(Rojo "El ID ingresado no existe.\n" Reset);
-                    break;
-                }
-            }
-
-            do
-            {
-                printf("Ingrese la cantidad de descuento que desea: ");
-                status = scanf("%f", &descuento);
-                if (status == 0)
-                {
-                    printf(Rojo "Error ingrese un numero. \n" Reset);
-                    while (getchar() != '\n')
-                        ;
-                }
-                if (descuento < 0 || descuento > 100)
-                {
-                    printf(Rojo "Cantidad de descuento no valida.\n" Reset);
-                }
-            } while (descuento < 0 || descuento > 100 || status == 0);
-            if (descuento == 0)
-            {
-                venta = cantidad * preciofinal;
-            }
-            if (descuento >= 1)
-            {
-                venta = cantidad * preciofinal;
-                descuento = venta * (descuento / 100);
-                venta = venta - descuento;
-            }
-            if (cantidad == 1)
-            {
-                printf(Verde "La cantidad vendida fue de %d unidad\n", cantidad, Reset);
-                printf(Verde "El total de la venta es de $%.2f\n", venta, Reset);
-                total_ganancias += venta;
-            }
-            else
-            {
-                printf(Verde "La cantidad vendida fue de %d unidades\n", cantidad, Reset);
-                printf(Verde "El total de la venta es de $%.2f\n", venta, Reset);
-                total_ganancias += venta;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                if (strcmp(id[i], naux) == 0)
-                {
-                    stock[i] -= cantidad;
-                    if (stock[i] == 1)
+                    do
                     {
-                        printf(Verde "El total stock actual es de %d unidad\n", stock[i], Reset);
+                        printf("Ingrese la cantidad de descuento que desea: ");
+                        status = scanf("%f", &descuento);
+                        if (status == 0)
+                        {
+                            printf(Rojo "Error ingrese un numero. \n" Reset);
+                            while (getchar() != '\n')
+                                ;
+                        }
+                        if (descuento < 0 || descuento > 100)
+                        {
+                            printf(Rojo "Cantidad de descuento no valida.\n" Reset);
+                        }
+                    } while (descuento < 0 || descuento > 100 || status == 0);
+                    if (descuento == 0)
+                    {
+                        venta = cantidad * preciofinal;
+                    }
+                    if (descuento >= 1)
+                    {
+                        venta = cantidad * preciofinal;
+                        descuento = venta * (descuento / 100);
+                        venta = venta - descuento;
+                    }
+                    if (cantidad == 1)
+                    {
+                        printf(Verde "La cantidad vendida fue de %d unidad\n", cantidad, Reset);
+                        printf(Verde "El total de la venta es de $%.2f\n", venta, Reset);
+                        total_ganancias += venta;
                     }
                     else
                     {
-                        printf(Verde "El total stock actual es de %d unidades\n", stock[i], Reset);
+                        printf(Verde "La cantidad vendida fue de %d unidades\n", cantidad, Reset);
+                        printf(Verde "El total de la venta es de $%.2f\n", venta, Reset);
+                        total_ganancias += venta;
                     }
-                    break;
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (strcmp(id[i], naux) == 0)
+                        {
+                            stock[i] -= cantidad;
+                            if (stock[i] == 1)
+                            {
+                                printf(Verde "El total stock actual es de %d unidad\n", stock[i], Reset);
+                            }
+                            else
+                            {
+                                printf(Verde "El total stock actual es de %d unidades\n", stock[i], Reset);
+                            }
+                            break;
+                        }
+                    }
                 }
+                else
+                {
+                    status = 0;
+                }
+            }
+            if (status == 0)
+            {
+                printf(Rojo "El ID ingresado no existe.\n" Reset);
             }
             break;
         case 3:
@@ -282,6 +285,11 @@ int main()
             {
                 printf(Rojo "\nPor favor primero registrar el producto.\n" Reset);
                 break;
+            }
+            printf(Verde "ID\t\tNombre\t\tStock\t\tPrecio\t\tGanancia por producto\n" Reset);
+            for (int i = 0; i < cont; i++)
+            {
+                printf(Verde "%s\t\t%s\t\t%d\t\t%.2f\t\t%.2f\n" Reset, id[i], nombres[i], stock[i], precio[i], gananciasporproducto[i]);
             }
             printf(Verde "\nTotal de ganancias: $%.2f\n", total_ganancias, Reset);
             break;

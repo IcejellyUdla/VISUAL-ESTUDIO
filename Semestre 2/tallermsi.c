@@ -152,11 +152,10 @@ int main()
                         if (cantidad > stock[i])
                         {
                             printf(Rojo "No existe la cantidad necesaria para esta venta. Vuelva a ingresar la cantidad. \n" Reset);
-                            status = 0;
                         }
                         preciofinal = precio[i];
                         status = 1;
-                    } while (cantidad < 1 || status == 0);
+                    } while (cantidad < 1 || status == 0|| cantidad > stock[i]);
                     do
                     {
                         printf("Ingrese la cantidad de descuento que desea: ");
@@ -207,19 +206,18 @@ int main()
                             {
                                 printf(Verde "El total stock actual es de %d unidades\n", stock[i], Reset);
                             }
-                            break;
-                        }
+                       }
                     }
+                    break;
                 }
                 else
                 {
-                    status = 0;
+                    printf(Rojo "El ID ingresado no existe.\n" Reset);
+                    break;
                 }
+                
             }
-            if (status == 0)
-            {
-                printf(Rojo "El ID ingresado no existe.\n" Reset);
-            }
+            
             break;
         case 3:
             if (productoregistrado != 1)
